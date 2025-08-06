@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: django-app
+    name: my-django-app
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn usindia.wsgi"
+    startCommand: "gunicorn myproject.wsgi"
     envVars:
       - key: DISABLE_COLLECTSTATIC
         value: "1"
