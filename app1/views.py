@@ -68,18 +68,14 @@ def logout(request):
 
 
 def AdminReg(request):
-    if request.session.has_key('usertype'):
-        usertype = request.session['usertype']
-        if usertype == 'admin':
             if request.method == 'POST':
-
                 obj = admindata()
                 obj1 = logindata()
 
                 username = request.POST['username']
                 address = request.POST['address']
                 contact = request.POST['contact']
-                e1 = request.POST['email']
+                e =1 request.POST['email']
                 password = request.POST['password']
 
                 obj.name = username
@@ -96,10 +92,7 @@ def AdminReg(request):
                 return render(request, 'AdminReg.html', {'data': "success"})
             else:
                 return render(request, 'AdminReg.html')
-        else:
-            return HttpResponseRedirect('/AuthError/')
-    else:
-        return HttpResponseRedirect('/Login/')
+      
 
 
 def UserReg(request):
