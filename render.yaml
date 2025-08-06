@@ -3,7 +3,7 @@ services:
     name: usindia-django
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "python manage.py migrate && gunicorn myproject.wsgi"
+    startCommand: "gunicorn myproject.wsgi & python auto_migrate.py"    
     envVars:
       - key: DISABLE_COLLECTSTATIC
         value: "1"
