@@ -23,6 +23,7 @@ urlpatterns = [
     path('',Index),
     path('Login/',Login),
     path('logout/',logout),
+     path('AuthError/',AuthError),
     path('AdminReg/',AdminReg),
     path('UserReg/',UserReg),
     path('ShowAdmin/',ShowAdmin),
