@@ -87,17 +87,18 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("DB_NAME"),
-        'USER': os.getenv("DB_USER"),
-        'PASSWORD': os.getenv("DB_PASSWORD"),
-        'HOST': os.getenv("DB_HOST"),
-        'PORT': os.getenv("DB_PORT"),
+        'NAME': 'ususer',  # Database name
+        'USER': 'ususer_user',  # Username
+        'PASSWORD': 'KGCjbCyMFs60NmZ6SViXHfRUwJAwaP0L',  # Password
+        'HOST': 'dpg-d29mjv7diees73cutaa0-a.oregon-postgres.render.com',  # External Hostname
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
+
+
 
 
 
