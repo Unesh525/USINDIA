@@ -75,7 +75,7 @@ def AdminReg(request):
                 username = request.POST['username']
                 address = request.POST['address']
                 contact = request.POST['contact']
-                e =1 request.POST['email']
+                e1 = request.POST['email']
                 password = request.POST['password']
 
                 obj.name = username
