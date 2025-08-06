@@ -1,20 +1,20 @@
 import os
-from dotenv import load_dotenv
 import django
+import dotenv
 
-# Load env
-load_dotenv()
+# Load environment variables
+dotenv.load_dotenv()
 
 # Set Django settings module
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
-
 django.setup()
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
-# Create superuser
+User = get_user_model()
+
 if not User.objects.filter(username="admin").exists():
     User.objects.create_superuser("admin", "admin@example.com", "adminpassword")
     print("✅ Superuser created successfully!")
 else:
-    print("⚠️ Superuser already exists.")
+    print("ℹ️ Superuser already exists.")
