@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Home</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f6fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #2f3640;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      font-size: 16px;
+      text-decoration: none;
+      background-color: #44bd32;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+      background-color: #218c28;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Admin Home</h1>
+    <a href="../ShowUser/" class="btn">Show User</a>
+    <a href="../logout/" class="btn btn-danger w-25">Logout</a>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<h1>Login</h1>
+
+<form method="post" action="../Login/">
+    {% csrf_token %}
+    <p>Email <input type="text" name="email" /> </p>
+    <p>Password<input type="password" name="password" /> </p>
+    <p><input type="submit"  value="Login" /> </p>
+</form>

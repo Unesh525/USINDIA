@@ -1,0 +1,21 @@
+<h1>Admin Data</h1>
+{% if data %}
+<table border="2" width="100%">
+    <tr>
+        <th>User Name</th>
+        <th>Address</th>
+        <th>Contact</th>
+        <th>Email</th>
+    </tr>
+  {% for d in data %}
+    <tr>
+
+        <td>{{d.name}}</td>
+        <td>{{d.address}}</td>
+        <td>{{d.contact}}</td>
+        <td>{{d.email}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}

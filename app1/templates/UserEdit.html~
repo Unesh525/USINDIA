@@ -1,0 +1,19 @@
+<h1>User Register</h1>
+{% if data %}
+<form action="../UserEdit1/"  method="post">
+    {% for d in data %}
+    {% csrf_token %}
+    <label>User Name:</label>
+    <input type="text" name="username" value="{{d.name}}"><br><br>
+    <label>Email:</label>
+    <input type="text" name="email" value="{{d.email}}" readonly><br><br>
+    <label>Password:</label>
+    <input type="password" name="password" value="{{d.password}}"><br><br>
+    <input type="submit" value="Save & Change" >
+    {% endfor %}
+</form>
+{% endif %}
+{% if name %}
+    {{name}}
+{% endif %}
+
