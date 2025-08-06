@@ -3,11 +3,21 @@ services:
     name: usindia-django
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn myproject.wsgi & python auto_migrate.py"    
+    startCommand: "gunicorn myproject.wsgi & python auto_migrate.py"
     envVars:
       - key: DISABLE_COLLECTSTATIC
         value: "1"
       - key: PYTHON_VERSION
-        value: 3.11
+        value: "3.11"
       - key: DEBUG
         value: "True"
+      - key: DB_NAME
+        value: "ususer"
+      - key: DB_USER
+        value: "ususer_user"
+      - key: DB_PASSWORD
+        value: "KGCjbCyMFs60NmZ6SViXHfRUwJAwaP0L"
+      - key: DB_HOST
+        value: "35.227.164.209"
+      - key: DB_PORT
+        value: "5432"
