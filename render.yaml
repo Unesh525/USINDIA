@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: my-django-app
+    name: usindia-django
     env: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn myproject.wsgi"
@@ -9,7 +9,5 @@ services:
         value: "1"
       - key: PYTHON_VERSION
         value: 3.11
-      - key: SECRET_KEY
-        generateValue: true
       - key: DEBUG
-        value: "False"
+        value: "True"
