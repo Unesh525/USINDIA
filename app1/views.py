@@ -67,29 +67,38 @@ def logout(request):
     return HttpResponseRedirect('/Login/')
 
 def AdminReg(request):
-    if request.method == 'POST':
-        obj = admindata()
-        obj1 = logindata()
+    if request.session.has_key('usertype'):
+        usertype = request.session['usertype']
+        if usertype == 'admin':
+            if request.method == 'POST':
 
-        username = request.POST['username']
-        address = request.POST['address']
-        contact = request.POST['contact']
-        e1 = request.POST['email']
-        password = request.POST['password']
+                obj = admindata()
+                obj1 = logindata()
 
-        obj.name = username
-        obj.address = address
-        obj.contact = contact
-        obj.email = e1
-        obj.save()
+                username = request.POST['username']
+                address = request.POST['address']
+                contact = request.POST['contact']
+                e1 = request.POST['email']
+                password = request.POST['password']
 
-        obj1.email = e1
-        obj1.password = password
-        obj1.usertype = 'admin'
-        obj1.save()            
-        return render(request, 'AdminReg.html', {'data': "success"})
+                obj.name = username
+                obj.address = address
+                obj.contact = contact
+                obj.email = e1
+                obj.save()
+
+                obj1.email = e1
+                obj1.password = password
+                obj1.usertype = 'admin'
+                obj1.save()
+
+                return render(request, 'AdminReg.html', {'data': "success"})
+            else:
+                return render(request, 'AdminReg.html')
+        else:
+            return HttpResponseRedirect('/AuthError/')
     else:
-        return render(request, 'AdminReg.html')
+        return HttpResponseRedirect('/Login/')
 
 
 
