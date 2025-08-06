@@ -3,10 +3,10 @@ services:
     name: django-app
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn myproject.wsgi:application"
+    startCommand: "gunicorn usindia.wsgi"
     envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: myproject.settings
+      - key: DISABLE_COLLECTSTATIC
+        value: "1"
       - key: PYTHON_VERSION
         value: 3.11
       - key: SECRET_KEY
