@@ -118,9 +118,9 @@ def UserReg(request):
         obj1.password = password
         obj1.usertype = 'user'
         obj1.save()
-        return render(request, 'UserReg.html', {'data': "success"})
+        return render(request,'Login.html')
     else:
-        return render(request, 'UserReg.html')
+        return render(request,'Login.html')
 
 
 
