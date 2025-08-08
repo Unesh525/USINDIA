@@ -23,7 +23,7 @@ def Login(request):
         elif usertype == 'user':
             return HttpResponseRedirect('/UserHome/')
         else:
-            return HttpResponseRedirect('/AuthError/')
+            return render(request,'Login.html',{'msg':"Email and Passowrd Wrong"})
     else:
         return render(request,'Login.html')
 
@@ -34,7 +34,7 @@ def AdminHome(request):
         if usertype == 'admin':
             return render(request, 'AdminHome.html')
         else:
-            return render(request,'Login.html',{'msg':"Username and Passowrd Wrong"})
+            return render(request,'Login.html',{'msg':"Email and Passowrd Wrong"})
     else:
         return HttpResponseRedirect('/AuthError/')
 
@@ -49,7 +49,7 @@ def UserHome(request):
             data = PhishedData.objects.filter(phishing_link__in=links)
             return render(request, 'UserHome.html',{'data':obj,'data1':data})
         else:
-            return render(request,'Login.html',{'msg':"Username and Passowrd Wrong"})
+            return render(request,'Login.html',{'msg':"Email and Passowrd Wrong"})
     else:
         return HttpResponseRedirect('/AuthError/')
 
