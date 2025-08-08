@@ -34,7 +34,7 @@ def AdminHome(request):
         if usertype == 'admin':
             return render(request, 'AdminHome.html')
         else:
-            return HttpResponseRedirect('/AuthError/')
+            return render(request,'Login.html',{'msg':"Username and Passowrd Wrong"})
     else:
         return HttpResponseRedirect('/AuthError/')
 
@@ -49,7 +49,7 @@ def UserHome(request):
             data = PhishedData.objects.filter(phishing_link__in=links)
             return render(request, 'UserHome.html',{'data':obj,'data1':data})
         else:
-            return HttpResponseRedirect('/AuthError/')
+            return render(request,'Login.html',{'msg':"Username and Passowrd Wrong"})
     else:
         return HttpResponseRedirect('/AuthError/')
 
