@@ -1,59 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Home</title>
   <style>
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f6fa;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #2f3640, #353b48);
+      color: #fff;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
     }
 
     .container {
+      background: #ffffff;
+      color: #2f3640;
+      padding: 40px 60px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       text-align: center;
-      background: white;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
     }
 
-    h1 {
-      color: #2f3640;
+    .container h1 {
       margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: 600;
+      color: #192a56;
     }
 
     .btn {
-      display: inline-block;
-      padding: 12px 25px;
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
       font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+      background: #44bd32;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
       text-decoration: none;
-      background-color: #44bd32;
-      color: white;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .btn:hover {
-      background-color: #218c28;
+      background: #27ae60;
+    }
+
+    .btn.logout {
+      background: #e84118;
+    }
+
+    .btn.logout:hover {
+      background: #c23616;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Admin Home</h1>
-    <a href="../ShowUser/" class="btn">Show User</a>
-    <a href="../AdminReg/" class="btn">New Admin</a>
-    <a href="../logout/" class="btn btn-danger w-25">Logout</a>
-
+    <h1>Welcome Admin</h1>
+    <a href="../ShowUser/" class="btn">Show Users</a>
+    <a href="../AdminReg/" class="btn">Add New Admin</a>
+    <a href="../logout/" class="btn logout">Logout</a>
   </div>
 </body>
 </html>
